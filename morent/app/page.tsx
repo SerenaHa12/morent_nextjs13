@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { CarCard, CustomFilter, Hero, SearchBar } from '@/components';
-import { fetchCar } from '@/utils';
+import { fetchCars } from '@/utils';
 
 
 export default async function Home() {
-  const allCars = await fetchCar();
+  const allCars = await fetchCars();
+
+  // console.log(allCars);
 
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
   return (
