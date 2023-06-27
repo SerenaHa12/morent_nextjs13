@@ -1,3 +1,5 @@
+import { CarProps, FilterProps } from "@/types";
+
 export const calculateCarRent = (city_mpg: number, year: number) => {
 	const basePricePerDay = 50; // Base rental price per day in dollars
 	const mileageFactor = 0.1; // Additional rate per mile driven
@@ -13,7 +15,8 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
 	return rentalRatePerDay.toFixed(0);
 };
 
-export async function fetchCars() {
+export async function fetchCars(filters: FilterProps) {
+	const { manufacturer, year, model, limit, fuel } = filters
 	const headers = {
 		'X-RapidAPI-Key': '6ae25c5b0dmsh1dcf2111f7d15ddp103047jsn61d0765af8d0',
 		'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
@@ -25,3 +28,5 @@ export async function fetchCars() {
 
 	return result;
 }
+
+export const generateCarImageUrl = (car: CarProps, angle?: string) => {}
