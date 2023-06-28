@@ -30,3 +30,13 @@ export async function fetchCars(filters: FilterProps) {
 }
 
 export const generateCarImageUrl = (car: CarProps, angle?: string) => {}
+
+export const updateSearchParams = (type: string, value: string) => {
+	// Create a new URLSearchParams object using the current URL search parameters
+    const searchParams = new URLSearchParams(window.location.search);
+    searchParams.set(type, value);
+
+    // Generate the new pathname with the updated search parameters
+    const newPathname = `${window.location.pathname}?${searchParams.toString()}`;
+	return newPathname;
+}
